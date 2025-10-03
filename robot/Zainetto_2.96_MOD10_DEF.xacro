@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="zainetto">
+
+  <!-- Define properties -->
+  <xacro:property name="mesh_file" value="package://your_package_name/meshes/Zainetto_2.96_MOD10_DEF.stl"/>
+  <xacro:property name="mesh_scale" value="0.001 0.001 0.001"/>
+  <xacro:property name="mass" value="1.0"/>
+  <xacro:property name="ixx" value="0.01"/>
+  <xacro:property name="iyy" value="0.01"/>
+  <xacro:property name="izz" value="0.01"/>
+
+  <!-- Base link -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="${mesh_file}" scale="${mesh_scale}"/>
+      </geometry>
+      <material name="gray">
+        <color rgba="0.7 0.7 0.7 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="${mesh_file}" scale="${mesh_scale}"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="${mass}"/>
+      <inertia ixx="${ixx}" ixy="0.0" ixz="0.0"
+               iyy="${iyy}" iyz="0.0"
+               izz="${izz}"/>
+    </inertial>
+  </link>
+</robot>
